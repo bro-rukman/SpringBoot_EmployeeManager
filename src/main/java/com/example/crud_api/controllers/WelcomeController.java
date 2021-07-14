@@ -6,12 +6,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping
 public class WelcomeController {
-
-    @GetMapping
+    @GetMapping("/")
     public String welcome(){
         return "Welcome to Spring boot API";
     }
-
+    @GetMapping("/user")
+    public String user(){
+        return "Welcome user";
+    }
+    @GetMapping("/admin")
+    public String admin(){
+        return "Welcome admin";
+    }
 }
