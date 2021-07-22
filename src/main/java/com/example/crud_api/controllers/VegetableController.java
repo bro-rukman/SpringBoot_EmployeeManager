@@ -34,7 +34,7 @@ public class VegetableController {
         return new ResponseEntity<>(vegetable1, HttpStatus.CREATED);
     }
     @PutMapping("/update/{id}")
-    public ResponseEntity<Vegetable> updateProduct(Vegetable vegetable){
+    public ResponseEntity<Vegetable> updateProduct(@RequestBody Vegetable vegetable){
         Vegetable vegetable2 = vegetableService.updateVegetable(vegetable);
         return new ResponseEntity<>(vegetable2,HttpStatus.OK);
     }

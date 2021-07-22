@@ -2,12 +2,13 @@ package com.example.crud_api.models;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 public class Employee implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false,updatable = false)
+    @Column(nullable = false)
     private Long id;
     private String name;
     private String email;
@@ -16,6 +17,10 @@ public class Employee implements Serializable {
     private String imageUrl;
     @Column(nullable = false,updatable = false)
     private String employeeCode;
+
+    @OneToMany(targetEntity = Product.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "cp_fk", referencedColumnName = "id")
+    private List<Product> products;
 
     public Employee(){}
     public Employee(Long id,String name,String email,String phone,String jobTitle,String imageUrl,String employeeCode){

@@ -1,7 +1,6 @@
 package com.example.crud_api.controllers;
 
 import com.example.crud_api.models.Product;
-import com.example.crud_api.repos.ProductRepo;
 import com.example.crud_api.services.ProductService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,7 +33,7 @@ public class ProductController {
         return new ResponseEntity<>(product1,HttpStatus.CREATED);
     }
     @PutMapping("/update/{id}")
-    public ResponseEntity<Product> updateProduct(Product product){
+    public ResponseEntity<Product> updateProduct(@RequestBody Product product){
         Product product2 = productService.updateProduct(product);
         return new ResponseEntity<>(product2,HttpStatus.OK);
     }

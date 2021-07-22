@@ -5,8 +5,6 @@ import com.example.crud_api.models.Employee;
 import com.example.crud_api.repos.EmployeeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.CrossOrigin;
-
 import java.util.List;
 import java.util.UUID;
 
@@ -24,7 +22,6 @@ public class EmployeeService {
         return employeeRepo.save(employee);
     }
 //  get
-    @CrossOrigin(origins = "http://localhost:8080")
     public List<Employee> findAllEmployee(){
         return employeeRepo.findAll();
     }
