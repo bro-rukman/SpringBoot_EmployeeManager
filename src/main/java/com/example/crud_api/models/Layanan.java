@@ -1,22 +1,27 @@
 package com.example.crud_api.models;
 
+import org.springframework.validation.annotation.Validated;
+
 import javax.persistence.*;
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
+@Validated
 @Table(name = "layanan")
 public class Layanan implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
     private Long id;
-    @Column(nullable = false)
+    @NotBlank(message = "Title must be not blank !")
     private String title;
-    @Column(nullable = false)
+    @NotBlank(message = "Description must not be blank !")
     private String description;
-
     public Layanan(){}
-
     public Layanan(Long id, String title, String description) {
         this.id = id;
         this.title = title;

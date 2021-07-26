@@ -1,6 +1,8 @@
 package com.example.crud_api.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 @Entity
 @Table(name = "instructor")
@@ -14,7 +16,9 @@ public class Instructor implements Serializable {
     private String FirstName;
     @Column(name = "last_name")
     private String LastName;
-    @Column(name = "email")
+    @Column(name = "email", unique = true)
+    @Email
+    @NotNull
     private String Email;
 
     @OneToOne(cascade = CascadeType.ALL)
