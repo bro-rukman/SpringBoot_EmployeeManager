@@ -3,6 +3,7 @@ package com.example.crud_api.controllers;
 import com.example.crud_api.exceptions.LayananBadRequestException;
 import com.example.crud_api.exceptions.LayananNotFoundException;
 import com.example.crud_api.models.Layanan;
+import com.example.crud_api.models.LayananImage;
 import com.example.crud_api.services.LayananService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,6 +39,11 @@ public class LayananController {
         Layanan layanan1 = layananService.addLayanan(layanan);
         return new ResponseEntity<>(layanan1,HttpStatus.CREATED);
     }
+//    postImage
+//    @PostMapping("/addImage")
+//    public ResponseEntity<LayananImage> addLayananImage(@Valid @RequestBody LayananImage layananImage){
+//        LayananImage layananImage1 = layananService.UploadImage(layananImage);
+//    }
 //    update
     @PutMapping("/update/{id}")
     public ResponseEntity<Layanan> updateLayanan(@PathVariable("id") Long id, @Valid @RequestBody Layanan layanan){

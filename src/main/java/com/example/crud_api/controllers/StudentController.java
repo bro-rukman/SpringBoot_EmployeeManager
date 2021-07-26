@@ -2,12 +2,16 @@ package com.example.crud_api.controllers;
 
 import com.example.crud_api.exceptions.StudentNotFoundException;
 import com.example.crud_api.models.Student;
+import com.example.crud_api.models.StudentProfile;
 import com.example.crud_api.services.StudentService;
 import com.example.crud_api.repos.StudentRepo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -15,7 +19,6 @@ import java.util.List;
 public class StudentController {
 
     private StudentService studentService;
-    private StudentRepo studentRepo;
 
     public StudentController(StudentService studentService) {
         this.studentService = studentService;
@@ -31,8 +34,9 @@ public class StudentController {
         return new ResponseEntity<>(student, HttpStatus.OK);
     }
     @PostMapping("/add")
-    public ResponseEntity<Student> addStudent(@RequestBody Student student){
+    public ResponseEntity<Student> addStudent(@Valid @RequestBody Student student, StudentProfile studentProfile)throws MethodArgumentNotValidException {
         Student student1 = studentService.addStudent(student);
+        StudentProfile studentProfile1 = studentService.addProfile(studentProfile);
         return new ResponseEntity<>(student1, HttpStatus.CREATED);
     }
     @PutMapping("/update/{id}")

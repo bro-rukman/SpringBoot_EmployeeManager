@@ -21,6 +21,10 @@ public class LayananImage {
         this.contentType = contentType;
     }
 
+    public LayananImage() {
+
+    }
+
     public Long getId() {
         return id;
     }
@@ -52,4 +56,6 @@ public class LayananImage {
     public void setContentType(String contentType) {
         this.contentType = contentType;
     }
+
+
 }

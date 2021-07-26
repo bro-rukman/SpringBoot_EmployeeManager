@@ -2,15 +2,22 @@ package com.example.crud_api.services;
 
 import com.example.crud_api.exceptions.LayananNotFoundException;
 import com.example.crud_api.models.Layanan;
+import com.example.crud_api.models.LayananImage;
+import com.example.crud_api.repos.LayananImageRepo;
 import com.example.crud_api.repos.LayananRepo;
+import com.example.crud_api.wrappers.LayananImageWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Service
 public class LayananService {
     private final Layanan layanan = new Layanan();
+//    private final LayananImage layananImage = new LayananImage();
+    @Autowired
+    private LayananImageRepo layananImageRepo;
     @Autowired
     private LayananRepo layananRepo;
     public LayananService(LayananRepo layananRepo) {
@@ -37,14 +44,14 @@ public class LayananService {
     }
 //    delete
     public void deleteLayanan(Long id) {
-//        try{
-//            layananRepo.findById(id);
-//            layananRepo.deleteById(id);
-//        }catch (LayananNotFoundException exception){
-//            throw new  LayananNotFoundException("Layanan dengan id "+id+"tidak ditemukan !");
-//        }
-
         layananRepo.findById(id).orElseThrow(()-> new LayananNotFoundException("Layanan no " + id + "tidak ditemukan !"));
         layananRepo.deleteById(id);
     }
+//    public LayananImage UploadImage(@Valid LayananImage layananImageWrapper){
+//        LayananImage layananImage = new LayananImage();
+//        layananImage.setLayanan(layananRepo.findById(layananImageWrapper.getImageId()).get());
+//        layananImage.setContentType(layananImageWrapper.getContentType());
+//        layananImage.setBase64(layananImageWrapper.getBase64());
+//        return layananImageRepo.save(layananImage);
+//    }
 }

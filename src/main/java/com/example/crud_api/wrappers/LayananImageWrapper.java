@@ -1,6 +1,12 @@
 package com.example.crud_api.wrappers;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 public class LayananImageWrapper {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long imageId;
     private String contentType;
     private String base64;
